@@ -1,0 +1,15 @@
+.vagrant/
+arcanist/
+libphutil/
+phabricator/
+modules/*
+!modules/nginx/
+!modules/php/
+
+### /Users/xiaogaozi/.gitignore-boilerplates/Global/vim.gitignore
+
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
