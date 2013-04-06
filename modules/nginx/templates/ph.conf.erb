@@ -8,8 +8,7 @@ server {
   location / {
     index   index.php;
 
-    if ( !-f $request_filename )
-    {
+    if (!-f $request_filename) {
       rewrite ^/(.*)$ /index.php?__path__=/$1 last;
       break;
     }
@@ -20,7 +19,7 @@ server {
     fastcgi_index   index.php;
 
     #custom environment variable
-    fastcgi_param PHABRICATOR_ENV     "custom/myconfig";
+    fastcgi_param  PHABRICATOR_ENV    "custom/myconfig";
 
     #required if PHP was built with --enable-force-cgi-redirect
     fastcgi_param  REDIRECT_STATUS    200;
