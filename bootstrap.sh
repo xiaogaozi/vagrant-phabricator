@@ -16,5 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-puppet module install puppetlabs-apt
-puppet module install puppetlabs-mysql
+install_module () {
+  if ! puppet module list | grep -q "$1"; then
+    puppet module install "$1"
+  fi
+}
+
+install_module puppetlabs-apt
+install_module puppetlabs-mysql
