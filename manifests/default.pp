@@ -6,13 +6,13 @@ class { 'apt':
 }
 
 apt::source { 'debian':
-  location    => 'http://mirrors.163.com/debian/',
+  location    => 'http://http.debian.net/debian/',
   repos       => 'main contrib non-free',
   include_src => false
 }
 
 apt::source { 'debian_updates':
-  location    => 'http://mirrors.163.com/debian/',
+  location    => 'http://http.debian.net/debian/',
   release     => "${::lsbdistcodename}-proposed-updates",
   repos       => 'main contrib non-free',
   include_src => false
