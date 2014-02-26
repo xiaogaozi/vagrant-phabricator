@@ -1,8 +1,8 @@
 server {
   listen      80;
-  server_name <%= servername %>;
+  server_name <%= @servername %>;
 
-  root      <%= root %>;
+  root      <%= @root %>;
   try_files $uri $uri/ /index.php;
 
   location / {

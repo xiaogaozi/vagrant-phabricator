@@ -50,7 +50,7 @@ nginx::server { 'ph.dev':
 include php
 
 class { 'mysql::server':
-  config_hash => { 'root_password' => 'root' }
+  root_password => 'root',
 }
 
 file { '/etc/profile.d/ph.sh':
