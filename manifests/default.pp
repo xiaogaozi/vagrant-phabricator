@@ -10,28 +10,24 @@ apt::source { 'debian':
   repos       => 'main contrib non-free',
   include_src => false
 }
-
 apt::source { 'debian_updates':
   location    => 'http://http.debian.net/debian/',
   release     => "${::lsbdistcodename}-proposed-updates",
   repos       => 'main contrib non-free',
   include_src => false
 }
-
 apt::source { 'debian_security':
   location    => 'http://security.debian.org/',
   release     => "${::lsbdistcodename}/updates",
   repos       => 'main contrib non-free',
   include_src => false
 }
-
 apt::source { 'puppetlabs':
   location   => 'http://apt.puppetlabs.com',
   repos      => 'main',
   key        => '4BD6EC30',
   key_server => 'pgp.mit.edu',
 }
-
 apt::source { 'dotdeb':
   location   => 'http://packages.dotdeb.org',
   repos      => 'all',
@@ -39,21 +35,25 @@ apt::source { 'dotdeb':
   key_source => 'http://www.dotdeb.org/dotdeb.gpg'
 }
 
-Apt::Source['dotdeb'] -> Class['nginx']
-Apt::Source['dotdeb'] -> Class['php']
+# Update before install any packages
+exec { 'apt-update':
+  command => '/usr/bin/apt-get update'
+}
+Apt::Source <| |> -> Exec['apt-update'] -> Package <| |>
 
+# Install and configure nginx
 include nginx
 nginx::server { 'ph.dev':
   root => '/vagrant/phabricator/webroot'
 }
 
+# And PHP
 include php
 
+# And MySQL
 class { 'mysql::server':
   root_password => 'root',
 }
 
-file { '/etc/profile.d/ph.sh':
-  ensure  => present,
-  content => 'export PHABRICATOR_ENV=custom/myconfig'
-}
+# And Phabricator
+include phabricator

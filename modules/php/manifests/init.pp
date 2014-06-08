@@ -16,5 +16,14 @@ class php {
     enable => true
   }
 
+  ini_setting { 'fpm/pool.d/www.conf listen':
+    ensure  => present,
+    path    => '/etc/php5/fpm/pool.d/www.conf',
+    section => 'www',
+    setting => 'listen',
+    value   => '127.0.0.1:9000',
+    notify  => Service['php5-fpm']
+  }
+
   Package['php5-fpm'] -> Service['php5-fpm']
 }

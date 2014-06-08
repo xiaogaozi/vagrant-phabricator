@@ -1,0 +1,12 @@
+{
+  "environment.append-paths"      : [
+    "\/bin",
+    "\/usr\/bin",
+    "\/usr\/local\/bin"
+  ],
+  "repository.default-local-path" : "\/home\/vagrant",
+  "mysql.pass"                    : "root",
+  "mysql.user"                    : "root",
+  "mysql.host"                    : "127.0.0.1",
+  "phabricator.base-uri"          : "http:\/\/ph.dev"
+}

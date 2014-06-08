@@ -4,7 +4,10 @@ libphutil/
 phabricator/
 modules/*
 !modules/nginx/
+!modules/phabricator/
 !modules/php/
+.librarian/
+.tmp/
 
 ### /Users/xiaogaozi/.gitignore-boilerplates/Global/vim.gitignore
 

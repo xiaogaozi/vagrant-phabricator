@@ -18,9 +18,6 @@ server {
     fastcgi_pass    localhost:9000;
     fastcgi_index   index.php;
 
-    #custom environment variable
-    fastcgi_param  PHABRICATOR_ENV    "custom/myconfig";
-
     #required if PHP was built with --enable-force-cgi-redirect
     fastcgi_param  REDIRECT_STATUS    200;
 
