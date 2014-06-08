@@ -2,11 +2,12 @@
 
 Phabricator development box using Vagrant
 
-## Bootstrap ##
+## Quickstart ##
 
 ```bash
-$ vagrant box add squeeze64 http://dl.dropbox.com/u/937870/VMs/squeeze64.box
-$ ln -s $(pwd)/puppet.conf ~/.puppet/puppet.conf
-$ ./bootstrap.sh
+$ git clone https://github.com/xiaogaozi/vagrant-phabricator.git
+$ cd vagrant-phabricator
 $ vagrant up
 ```
+
+Phabricator is now running at http://192.168.33.10/
